@@ -1,17 +1,79 @@
 .example-container {
-    width: 500px;
-    height: 300px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 80px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
   }
-  
-  .example-sidenav-content {
-    display: flex;
-    height: 100%;
+
+  .item-button {
+      display: flex;
+      margin-left:auto;
+      margin-right: auto;
+      height: 5em;
+      margin-top: 10%;
+  }
+  .item-icon {
+      font-size: 3em;
+      color: rgb(51, 102, 153);
+  }
+  .mat-toolbar-row, .mat-toolbar-single-row {
+      height: 80px;
+  }
+  .example-sidenav {
+    display: inline;
     align-items: center;
     justify-content: center;
+    width: 5%;
+    background-color: rgb(217, 230, 242);
   }
   
-  .example-sidenav {
-    padding: 20px;
+  .example-header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-left: 0px;
+    background-color: rgb(217, 230, 242);
+    span {   
+        display: flex;
+    }
+    .menu-icon {
+        width: 5%;
+        height: 100%;
+        mat-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        background-color:  rgb(51, 102, 153);
+        color: white;
+        font-size: 3em;
+        width: 100%;
+        height: 100%;
+        }
+    }
+    .user-icon {
+        font-size: 40px;
+        color: rgb(51, 102, 153);
+        display: flex;
+        align-items: center;
+        padding-right: 1em;
+    }
+  }
+  
+  .example-footer {
+    position: fixed;
+    display: flex;
+    align-items: flex-end;
+    font-size: 15px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    mat-icon {
+        display: flex;
+        padding: 0.2em;
+    }
   }
   

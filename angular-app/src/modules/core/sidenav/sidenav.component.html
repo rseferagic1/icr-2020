@@ -1,0 +1,28 @@
+<mat-toolbar class="example-header">
+  <span class="menu-icon">
+    <mat-icon>menu</mat-icon>
+  </span>
+  <span>
+    {{loggedInUser}}
+    <mat-icon class="user-icon">account_box</mat-icon>
+  </span>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="'false'">
+    <ng-container *ngFor="let item of menuItems">
+      <div>
+        <button mat-button class="item-button" [matTooltip]="item.name" [matTooltipPosition]="'right'">
+          <mat-icon class="item-icon">{{item.icon}}</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar class="example-footer">
+  <mat-icon>copyright</mat-icon>
+  Elektronska naplata autocesta | ACC</mat-toolbar>

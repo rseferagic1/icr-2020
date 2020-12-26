@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userservice: UsersService
+  ) { }
 
+  loggedInUser: string;
+  menuItems = [{name: 'Dashboard', icon: 'dashboard'},{name: 'Add Credit', icon: 'credit_card'},
+  {name: 'View Routes', icon: 'alt_route'},{name: 'Account History', icon: 'history'}]
   ngOnInit() {
+    this.loggedInUser = this.userservice.getLoggedInUser();
   }
 
 }
