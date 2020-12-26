@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; 
-import { OverviewComponent } from './overview/overview.component';
+import { AccHistoryComponent } from './acc-history/acc-history.component';
 
 const routes: Routes = [
-    { path: '' , component: OverviewComponent }
+    { path: 'historija' , component: AccHistoryComponent }
   ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class HistoryRoutingModule { }

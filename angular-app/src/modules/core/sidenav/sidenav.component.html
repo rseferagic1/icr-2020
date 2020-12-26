@@ -12,7 +12,7 @@
   <mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="'false'">
     <ng-container *ngFor="let item of menuItems">
       <div>
-        <button mat-button class="item-button" [matTooltip]="item.name" [matTooltipPosition]="'right'">
+        <button mat-button class="item-button" (click)="redirectTo(item.name)" [matTooltip]="item.name" [matTooltipPosition]="'right'">
           <mat-icon class="item-icon">{{item.icon}}</mat-icon>
         </button>
       </div>
