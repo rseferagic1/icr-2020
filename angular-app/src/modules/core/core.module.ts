@@ -5,6 +5,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { UsersService } from './users.service';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/mater
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    RouterModule
   ],
   declarations: [SidenavComponent],
   exports: [
