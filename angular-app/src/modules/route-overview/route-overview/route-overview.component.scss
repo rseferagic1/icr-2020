@@ -1,0 +1,68 @@
+$base-color:  rgb(51, 102, 153);
+$base-light-color: rgb(217, 230, 242);
+.toolbar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6em;
+    background-color: #fafafa;
+    margin-bottom: 2%;
+    mat-icon {
+        font-size: 1.6em;
+        display: inline;
+        vertical-align: top;
+    }
+}
+.alles {
+    display: flex;
+}
+
+.sverute {
+    width: 60%;
+    height: 50%;
+    margin: 40px;
+    label {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+.filter {
+    width: 30%;
+    height: 50%;
+    margin: 40px;
+    form {
+        display: grid;
+        height: 100%;
+        align-content: space-between;
+    }
+    mat-form-field {
+        margin-bottom: 6%;
+    }
+    mat-icon {
+        font-size: 20px;
+    }
+    label {
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .join {
+        
+        display: grid;
+        height: 100%;
+        align-content: space-between;
+    }
+}
+.pretraga {
+    color: $base-light-color;
+    background-color: $base-color;
+    font-size: 20px;
+    margin: 2%;
+    padding: 10px;
+}
+
+.paneli {
+    margin-top: 20px;
+}
+mat-expansion-panel-header {
+    margin-top: 20px;
+}

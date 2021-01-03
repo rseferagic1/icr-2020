@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from 'src/modules/login/login/login.component';
 import { OverviewComponent } from 'src/modules/dashboard/overview/overview.component';
 import { AccHistoryComponent } from 'src/modules/history/acc-history/acc-history.component';
+import { RouteOverviewComponent } from 'src/modules/route-overview/route-overview/route-overview.component';
+import { RouteOverviewModule } from 'src/modules/route-overview/route-overview.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -29,6 +31,7 @@ import { AccHistoryComponent } from 'src/modules/history/acc-history/acc-history
     PaymentsModule,
     HistoryModule,
     DashboardModule,
+    RouteOverviewModule,
     LoginModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -37,7 +40,8 @@ import { AccHistoryComponent } from 'src/modules/history/acc-history/acc-history
         children: [
           { path: '', redirectTo: 'pocetna', pathMatch: 'full' },
           { path: 'pocetna', component: OverviewComponent },
-          { path: 'historija', component: AccHistoryComponent }
+          { path: 'historija', component: AccHistoryComponent },
+          { path: 'pregled-ruta', component: RouteOverviewComponent}
         ]
       }
 

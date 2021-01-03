@@ -1,0 +1,47 @@
+
+  <mat-toolbar class="toolbar-header">
+    <span>
+      Pregled ruta
+    </span>
+  </mat-toolbar>
+  <div class="alles">
+  <mat-card class="filter">
+    <form [formGroup]="tacke">
+      <div class="join">
+        <label>Početna tačka</label>
+      <mat-form-field>
+        <mat-select formControlName="pocetna">
+    <mat-option *ngFor="let poc of pocetne" [value]="poc">{{poc}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <label>Krajnja tačka</label>
+      <mat-form-field>
+        <mat-select formControlName="kraj">
+    <mat-option *ngFor="let kac of krajnje" [value]="kac">{{kac}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+      <button mat-button class="pretraga" (click)="pretrazi()">Pretraži</button>
+    </form>
+
+</mat-card>
+<mat-card class="sverute">
+  <label>Sve rute</label>
+  <mat-accordion class="paneli">
+    <ng-container *ngFor="let iz of izlazi">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{iz.izlaz}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{iz.cijena}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Dužina puta: 54km</p>
+      <p>Niste ranije vozili ovu rutu.</p>
+    </mat-expansion-panel>
+  </ng-container>
+    </mat-accordion>
+</mat-card>
+</div>
