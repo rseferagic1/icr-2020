@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-toolbar class="toolbar-header">
+    <span>
+      <mat-icon>toll</mat-icon>
+      ACC uređaji
+    </span>
+  </mat-toolbar>
+    <ng-container *ngFor="let tag of tagInfo">
+      <div class="info"><b>Broj ACC uređaja - </b>{{tag.id}}</div>
+      <div class="info"><b>Naziv ACC uređaja - </b>{{tag.naziv}}</div>
+    </ng-container>
+  <span class="info"> Donja granica: </span>
+  <input matInput type="number" [value]="lowerBound" [(ngModel)]="lowerBound" [disabled]="isEditDisabled">
+  <ng-container *ngIf="isEditDisabled; else save">
+  <button mat-button (click)="editLowerBound()"><mat-icon>edit</mat-icon></button>
+</ng-container>
+<ng-template #save>
+  <button mat-button (click)="saveLowerBound()"><mat-icon>save</mat-icon></button>
+</ng-template>
+</mat-card>

@@ -10,6 +10,13 @@ import { MatToolbarModule } from '@angular/material';
 import { PaymentsModule } from 'src/modules/payments/payments.module';
 import { HistoryModule } from 'src/modules/history/history.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
+import { LoginModule } from 'src/modules/login/login.module';
+import { LoginRoutingModule } from 'src/modules/login/login-routing.module';
+import { DashboardRoutingModule } from 'src/modules/dashboard/dashboard-routing.module';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from 'src/modules/login/login/login.component';
+import { OverviewComponent } from 'src/modules/dashboard/overview/overview.component';
+import { AccHistoryComponent } from 'src/modules/history/acc-history/acc-history.component';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +28,20 @@ import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
     CoreModule,
     PaymentsModule,
     HistoryModule,
-    DashboardModule
+    DashboardModule,
+    LoginModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      {path: 'login', component: LoginComponent, },
+      { path: 'in', component: SidenavComponent,
+        children: [
+          { path: '', redirectTo: 'pocetna', pathMatch: 'full' },
+          { path: 'pocetna', component: OverviewComponent },
+          { path: 'historija', component: AccHistoryComponent }
+        ]
+      }
+
+    ])
   ],
   providers: [],
   entryComponents: [

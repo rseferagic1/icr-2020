@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { UsersService } from './users.service';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { IcrAppComponent } from './icr-app/icr-app.component';
 
 @NgModule({
   imports: [
@@ -17,9 +18,10 @@ import { RouterModule } from '@angular/router';
     MatTooltipModule,
     RouterModule
   ],
-  declarations: [SidenavComponent],
+  declarations: [SidenavComponent, IcrAppComponent],
   exports: [
-    SidenavComponent
+    SidenavComponent,
+    IcrAppComponent
   ],
   providers: [UsersService]
 })

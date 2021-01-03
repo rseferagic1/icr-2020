@@ -24,19 +24,19 @@ export class SidenavComponent implements OnInit {
   redirectTo(itemName) {
     switch(itemName) {
       case "Početna": 
-        this.router.navigate(['/#']);
+        this.router.navigate(['/in/pocetna']);
         break;
       case "Dopuni kredit": 
-        this.router.navigate(['/dopuna']);
+        this.router.navigate(['/in/dopuna']);
         break;
       case "Pregled ruta": 
-        this.router.navigate(['/pregled-ruta']);
+        this.router.navigate(['/in/pregled-ruta']);
         break;
       case "Historija računa": 
-        this.router.navigate(['/historija']);
+        this.router.navigate(['/in/historija']);
         break;
       default:
-        this.router.navigate(['/#']);
+        this.router.navigate(['/in/pocetna']);
         break;
     }
   }

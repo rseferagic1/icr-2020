@@ -1,0 +1,22 @@
+<div class="background">
+  <mat-card class="login-c">
+    <mat-toolbar class="toolbar-header">
+      <span>
+        Elektronska naplata autocesta - ACC
+      </span>
+      </mat-toolbar>
+    <form [formGroup]="loginForm">
+      <mat-form-field>
+      <input matInput formControlName="username" placeholder="Korisničko ime" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" formControlName="password" placeholder="Password" required>
+    </mat-form-field>
+      <button mat-button type="button" (click)="login()">Login</button>
+    </form>
+    <div class="error" *ngIf="badcred">Vaši korisnički podaci nisu ispravni. Pokušajte opet.</div>
+    <div class="opt">
+    <span class="desc">Nemate korisnički račun? Registrujte se </span><a class="register">ovdje</a>
+  </div>
+  </mat-card>
+</div>

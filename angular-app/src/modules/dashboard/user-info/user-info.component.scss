@@ -11,6 +11,9 @@ $base-color:  rgb(51, 102, 153);
         vertical-align: top;
     }
 }
+.mb-5 {
+    padding-bottom: 5em;
+}
 .user-container {
     display: flex;
 }
@@ -30,7 +33,7 @@ $base-color:  rgb(51, 102, 153);
 .edit {
     height: 100%;
     mat-icon {
-        font-size: 2.5em;
+        font-size: 2.4em;
         color: $base-color;
     }
 }
