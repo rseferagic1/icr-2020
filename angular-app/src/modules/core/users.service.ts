@@ -10,7 +10,7 @@ export class UsersService {
 
   lowerBound = '10';
   users = [{username: "Test", password: "Test"}];
-  loggedInUser = null;
+  loggedInUser = 'Test';
 
   setLoggedInUser(user) {
     this.loggedInUser = user;

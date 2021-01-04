@@ -12,7 +12,7 @@ export class IcrAppComponent implements OnInit {
   constructor(private userService: UsersService) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.userService.getLoggedInUser();
+    this.isLoggedIn = this.userService.getLoggedInUser() != null;
   }
 
 }

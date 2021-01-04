@@ -17,6 +17,7 @@
       <label>Krajnja tačka</label>
       <mat-form-field>
         <mat-select formControlName="kraj">
+          <mat-option></mat-option>
     <mat-option *ngFor="let kac of krajnje" [value]="kac">{{kac}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -31,15 +32,15 @@
     <ng-container *ngFor="let iz of izlazi">
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
-        <mat-panel-title>
+        <mat-panel-title class="w-30">
           {{iz.izlaz}}
         </mat-panel-title>
         <mat-panel-description>
           {{iz.cijena}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>Dužina puta: 54km</p>
-      <p>Niste ranije vozili ovu rutu.</p>
+      <p>Dužina puta: {{iz.duzina}}</p>
+      <p>{{iz.historija}}</p>
     </mat-expansion-panel>
   </ng-container>
     </mat-accordion>

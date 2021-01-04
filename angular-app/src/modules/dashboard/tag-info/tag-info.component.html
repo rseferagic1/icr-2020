@@ -8,7 +8,9 @@
     <ng-container *ngFor="let tag of tagInfo">
       <div class="info"><b>Broj ACC uređaja - </b>{{tag.id}}</div>
       <div class="info"><b>Naziv ACC uređaja - </b>{{tag.naziv}}</div>
+      <div class="info"><b>Aktivan od - </b>10.01.2020.</div>
     </ng-container>
+    <div class="editlb">
   <span class="info"> Donja granica: </span>
   <input matInput type="number" [value]="lowerBound" [(ngModel)]="lowerBound" [disabled]="isEditDisabled">
   <ng-container *ngIf="isEditDisabled; else save">
@@ -17,4 +19,5 @@
 <ng-template #save>
   <button mat-button (click)="saveLowerBound()"><mat-icon>save</mat-icon></button>
 </ng-template>
+</div>
 </mat-card>

@@ -92,7 +92,7 @@ const ELEMENT_DATA: Historija[] = [
     vrijemeIz: '15:49'
   },
   {
-    naziv: 'Naplata auteceste',
+    naziv: 'Naplata autoceste',
     datum: '10.07.2020.',
     iznos: '3.50KM',
     broj: '1230 2675 1884',
