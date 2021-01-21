@@ -1,0 +1,175 @@
+<div class="alles">
+  <mat-horizontal-stepper class="stepper" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <div class="formone">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Detalji dopune računa</ng-template>
+          <mat-label class="iznos">ACC uređaji</mat-label>
+          <mat-form-field class="acc-ur">
+            <mat-select formControlName="accUredjaji" multiple>
+              <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">Svi</mat-option>
+              <mat-option *ngFor="let ure of ureList" [value]="ure.id" (click)="tosslePerOne(allSelected.viewValue)">
+                {{ure.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-label class="iznos">Iznos</mat-label>
+          <mat-radio-group class="radio" formControlName="iznos">
+            <mat-radio-button value="10" checked="true">10.00 KM</mat-radio-button>
+            <mat-radio-button value="20">20.00 KM</mat-radio-button>
+            <mat-radio-button value="50">50.00 KM</mat-radio-button>
+            <mat-radio-button value="0">
+              <mat-form-field>
+                <input matInput type="number" [disabled]="isIzborni()" formFieldName="izborni" placeholder="XX.XX KM" />
+              </mat-form-field>
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <mat-label class="iznos">Datum uplate</mat-label>
+          <mat-form-field appearance="fill" class="daterang">
+            <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myFilter" [min]="today"
+              formControlName="datumuplate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="buttonlist">
+        <span class="gray">
+          <mat-icon>help</mat-icon>
+          <i>Ukoliko izaberete više od jednog ACC uređaja, na svaki tag će se dodati jednak izabrani iznos.</i>
+        </span>
+        <button mat-button class="dalje" matStepperNext>Dalje</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" class="h-full" label="Detalji o načinu plaćanja">
+      <div class="formone">
+        <div class="hasall">
+          <div class="w-70">
+            <form [formGroup]="secondFormGroup">
+              <mat-form-field class="placanje">
+                <mat-label>Način plaćanja</mat-label>
+                <mat-select formControlName="placanje">
+                  <mat-option value="0">{{savedPayments.brojKartice}}</mat-option>
+                  <mat-option value="1">Novo plaćanje</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="fle" *ngIf="secondFormGroup.get('placanje').value === '1'">
+                <mat-icon>contactless</mat-icon>
+                <form [formGroup]="novoPlacanje">
+
+                  <div class="brkr">
+                    <mat-form-field>
+                      <mat-label>Broj kartice</mat-label>
+                      <input matInput type="text" formControlName="brojKartice" [mask]="'0000 0000 0000 0000'" />
+                    </mat-form-field>
+                  </div>
+                  <div class="tri">
+                    <mat-form-field>
+                      <mat-label>Mjesec</mat-label>
+                      <input matInput type="text" formControlName="mjesec" [mask]="'00'" />
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Godina</mat-label>
+                      <input matInput type="text" formControlName="godina" [mask]="'00'" />
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>CVV KOD</mat-label>
+                      <input matInput type="text" formControlName="cvv" [mask]="'000'" />
+                    </mat-form-field>
+                  </div>
+                  <div class="imenakartici">
+                    <mat-form-field>
+                      <mat-label>Ime na kartici</mat-label>
+                      <input matInput formControlName="ime" type="text" />
+                    </mat-form-field>
+                  </div>
+                </form>
+              </div>
+            </form>
+          </div>
+          <mat-card class="w-25">
+            <mat-toolbar class="toolbar-header infomargin gray">
+              <span>
+                <mat-icon>info</mat-icon>
+                Info
+              </span>
+            </mat-toolbar>
+            <div>
+              <div class="info">
+                <span class="w-50">Datum uplate: </span>
+                <span class="w-50">{{firstFormGroup.get('datumuplate').value | date: 'shortDate'}}
+                </span>
+                </div>
+              <div  class="info">
+                <span class="w-50">ACC uređaji: </span>
+                <span class="w-50">
+                <ng-container *ngFor="let acc of getAccs()">
+                  {{acc}} <br>
+                </ng-container>
+              </span>
+              </div>
+              <div class="info">
+                <span class="w-50">Iznos: </span> 
+                <span class="w-50 boldiraj">{{getIznos()}}</span></div>
+            </div>
+          </mat-card>
+        </div>
+
+      </div>
+      <div class="buttonlist">
+        <button mat-button class="nazad" matStepperPrevious>Nazad</button>
+        <button mat-button class="dalje" (click)="prikazi3(stepper)">Dalje</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Detalji transakcije</ng-template>
+      <div class="formone m-10 ">
+        <mat-card class="w-70 formone">
+          <mat-toolbar class="toolbar-header infomargin gray">
+            <span>
+              <mat-icon>info</mat-icon>
+              Detalji transakcije
+            </span>
+          </mat-toolbar>
+          <div>
+            <div class="info">
+              <span class="w-50">Datum uplate: </span>
+              <span class="w-50">{{firstFormGroup.get('datumuplate').value | date: 'shortDate'}}
+              </span>
+              </div>
+            <div  class="info">
+              <span class="w-50">ACC uređaji: </span>
+              <span class="w-50">
+              <ng-container *ngFor="let acc of getAccs()">
+                {{acc}} <br>
+              </ng-container>
+            </span>
+            </div>
+            <div class="info">
+              <span class="w-50">Broj kartice / CVV: </span>
+              <span class="w-50">{{getPaymentInfo().brojKartice}} / {{getPaymentInfo().cvv}}
+              </span>
+              </div>
+              <div class="info">
+                <span class="w-50">Datum isteka kartice: </span>
+                <span class="w-50">{{getPaymentInfo().mjesec}}/{{getPaymentInfo().godina}}
+                </span>
+                </div>
+                <div class="info">
+                  <span class="w-50">Ime na kartici: </span>
+                  <span class="w-50">{{getPaymentInfo().ime}}
+                  </span>
+                  </div>
+            <div class="info">
+              <span class="w-50">Iznos: </span> 
+              <span class="w-50 bas-boldiraj">{{getIznos()}}</span></div>
+          </div>
+        </mat-card>
+      </div>
+      <div class="buttonlist">
+        <button mat-button class="nazad" matStepperPrevious>Nazad</button>
+        <button mat-button class="dalje" (click)="plati(stepper)">Plati i završi</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

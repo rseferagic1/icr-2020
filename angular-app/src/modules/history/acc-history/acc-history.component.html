@@ -1,13 +1,19 @@
-<mat-toolbar class="toolbar-header">
+<div class="filter-bar">
+  <mat-form-field>
+    <mat-label>Pretraga</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
   <span>
-    Historija korisničkog računa
+    <mat-icon [matTooltip]="'Historiju možete filtrirati unosom vrijednosti bilo kojeg polja'"
+    [matTooltipPosition]="'right'">help</mat-icon>
   </span>
-</mat-toolbar>
-<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+</div>
+<table mat-table matSort (matSortChange)="sortData($event)" [dataSource]="sortedData" multiTemplateDataRows
+  class="mat-elevation-z8">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-    <th mat-header-cell *matHeaderCellDef><b> {{imekolone[column]}} </b></th>
-    <td mat-cell *matCellDef="let element" 
-    [ngClass]="{'green': column == 'iznos' && element['naziv']=='Uplata', 'red': column == 'iznos' && element['naziv']=='Naplata autoceste'}"> 
+    <th mat-header-cell *matHeaderCellDef mat-sort-header><b> {{imekolone[column]}} </b></th>
+    <td mat-cell *matCellDef="let element"
+      [ngClass]="{'green': column == 'iznos' && element['naziv']=='Uplata', 'red': column == 'iznos' && element['naziv']=='Naplata autoceste'}">
       {{element[column]}} </td>
   </ng-container>
 
@@ -35,7 +41,7 @@
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
     [class.example-expanded-row]="expandedElement === element"
-    (click)="expandedElement = expandedElement === element ? null : element">
+    (click)="expandedElement = expandedElement === element || element['naziv']=='Uplata' ? null : element">
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>

@@ -33,5 +33,8 @@ export class LoginComponent implements OnInit {
     }
     else this.badcred = true;
   }
+  redirect() {
+    this.router.navigate(['/register']);
+  }
 
 }

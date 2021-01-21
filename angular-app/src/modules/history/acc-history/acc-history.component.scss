@@ -36,7 +36,11 @@ table {
   .example-element-description-attribution {
     opacity: 0.5;
   }
-
+.filter-bar {
+  width: 30%;
+  margin: 2%;
+  display: flex;
+}
   .toolbar-header {
     display: flex;
     justify-content: space-between;

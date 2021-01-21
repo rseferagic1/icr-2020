@@ -1,0 +1,139 @@
+$base-color:  #e68a00;
+$base-light-color: #fff;
+.alles {
+    height: 90%;
+    margin: 2%;
+}
+
+.stepper {
+    height: 100%;
+    
+}
+::ng-deep .mat-step-header .mat-step-icon {
+    font-size: 20px;
+    background-color: #e68a00;
+    color: #fff;
+}
+.acc-ur {
+    width: 50%;
+}
+.iznos {    
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    color: $base-color;
+    font-style: italic;
+}
+.radio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.daterang {
+    width: 30%;
+}
+.dalje {
+    color: $base-light-color;
+    background-color: $base-color;
+    font-size: 20px;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.brkr {
+    display: flex;
+    width: 30%;
+}
+.tri {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    mat-form-field {
+        margin-right: 5%;
+        width: 20%;
+    }
+}
+.hasall {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+}
+.w-70 {
+    width: 70%;
+}
+.w-25 {
+    width: 25%;
+}
+.w-50 {
+    width: 49%;
+    margin: 1%;
+}
+.info {
+    display: flex;
+}
+.gray {
+    color: gray;
+}
+.imenakartici {    
+    width: 30%;
+}
+::ng-deep .mat-horizontal-stepper-content.ng-trigger.ng-trigger-stepTransition.ng-tns-c8-1 {
+align-content: space-between;
+display: grid;
+}
+::ng-deep .mat-horizontal-content-container{
+    height: 90%;
+}
+.m-10 {
+    margin-top: 3%;
+}
+.bas-boldiraj {
+    font-size: 2em;
+    font-weight: 500;
+}
+.nazad {
+    background-color: $base-light-color;
+    color: $base-color;
+    font-size: 20px;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.buttonlist {
+    display: flex;
+    justify-content: space-between;    
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.boldiraj {
+    font-size: large;
+    font-weight: 600;
+}
+.infomargin {
+    margin-bottom: 12%;
+}
+.formone {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.fle {
+    display: flex;
+}
+::ng-deep .mat-step-label {
+font-size: 20px;
+}
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #e68a00;
+}
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+    background: #e68a00;
+}

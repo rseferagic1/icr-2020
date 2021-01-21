@@ -1,7 +1,10 @@
 <mat-toolbar class="example-header">
+  <div>
   <span class="menu-icon">
     <mat-icon>menu</mat-icon>
   </span>
+  <span class="title">{{title}}</span>
+</div>
   <span>
     {{loggedInUser}}
     <mat-icon class="user-icon">account_box</mat-icon>
@@ -13,7 +16,7 @@
     <ng-container *ngFor="let item of menuItems">
       <div>
         <button mat-button class="item-button" (click)="redirectTo(item.name)" [matTooltip]="item.name" [matTooltipPosition]="'right'">
-          <mat-icon class="item-icon">{{item.icon}}</mat-icon>
+          <mat-icon class="item-icon" [ngClass]="{'shadow': isactive(item.name)}">{{item.icon}}</mat-icon>
         </button>
       </div>
     </ng-container>

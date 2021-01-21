@@ -4,8 +4,9 @@ $base-light-color: rgb(217, 230, 242);
     display: flex;
     justify-content: space-between;
     font-size: 1.6em;
+    color:#e68a00;
     background-color: #fafafa;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
     mat-icon {
         font-size: 1.6em;
         display: inline;
@@ -21,7 +22,7 @@ $base-light-color: rgb(217, 230, 242);
     height: 50%;
     margin: 40px;
     label {
-        font-size: 20px;
+        font-size: 26px;
         font-weight: 500;
     }
 }
@@ -38,9 +39,7 @@ $base-light-color: rgb(217, 230, 242);
     mat-form-field {
         margin-bottom: 6%;
     }
-    mat-icon {
-        font-size: 20px;
-    }
+
     label {
         font-size: 20px;
         font-weight: 500;
@@ -62,9 +61,14 @@ $base-light-color: rgb(217, 230, 242);
 
 .paneli {
     margin-top: 20px;
+    font-size: 20px;
 }
 mat-expansion-panel-header {
     margin-top: 20px;
+    font-size: 20px;
+}
+::ng-deep .mat-expansion-panel-body {
+    font-size: 18px;
 }
 .w-30 {
     width: 30%;

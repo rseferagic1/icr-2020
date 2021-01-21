@@ -1,18 +1,56 @@
+$base-color:  rgb(51, 102, 153);
+$base-light-color: rgb(217, 230, 242);
 .toolbar-header {
     display: flex;
     justify-content: space-between;
     font-size: 1.6em;
     margin-bottom: 4%;
+    align-items: center;
+    color:#e68a00;
+    span {
+        align-items: center !important;
+    }
     mat-icon {
         font-size: 1.6em;
         display: inline;
         vertical-align: top;
     }
 }
+.visina {
+    height: 100%;
+    display: grid;
+    align-content: space-between;
+}
+.posalji {
+    color: $base-color;
+    font-size: 14px;
+    margin-bottom: 3%;
+}
+::ng-deep.blue-snackbar {
+    background-color: $base-color;
+}
+.thstwo {
+    display: grid;
+    align-content: space-between;
+}
 .info, input {
-    font-size: 1.2em;
-    margin: 1em;
+    font-size: 1.2em !important;
+    width: fit-content!important;
+    margin: 1em !important;
 }
 .editlb {
     display: flex;
+}
+.grey {
+    color: gray;
+}
+.cont {
+    width: 100%;
+    height: 95%;
+    display: flex;
+}
+.acc-list {
+    width: 80%;
+    margin-right: 2%;
+    height: 100%;
 }

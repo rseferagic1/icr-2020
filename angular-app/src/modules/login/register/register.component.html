@@ -1,0 +1,59 @@
+<div class="background">
+  <mat-card class="login-c">
+    <mat-toolbar class="toolbar-header">
+      <span>
+        Elektronska naplata autocesta - ACC
+      </span>
+    </mat-toolbar>
+    <form [formGroup]="registerForm">
+      <div class="w-50">
+        <mat-form-field>
+          <input matInput formControlName="firstName" placeholder="Ime" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="lastName" placeholder="Prezime" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="address" placeholder="Adresa" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="city" placeholder="Grad" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="zip" placeholder="Zip kod" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="country" >
+            <mat-option value="Bosna i Hercegovina">Bosna i Hercegovina</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="email" placeholder="Email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="phoneNumber" placeholder="Broj telefona" required>
+        </mat-form-field>
+      </div>
+      <div class="w-50">
+        <mat-form-field>
+          <input matInput formControlName="tagNumbers" placeholder="ACC uređaj" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput formControlName="username" placeholder="Korisničko ime" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="password" placeholder="Password" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="confirmPassword" placeholder="Potvrdi password" required>
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="register">
+    <button mat-button type="button" (click)="register()">Registruj se</button>
+    <span>Imate korisnički račun? Prijavite se &nbsp;<a role="button" (click)="redirect();"><i>ovdje.</i> </a></span>
+    
+    </div>
+  </mat-card>
+</div>

@@ -1,23 +1,72 @@
-<mat-card>
-  <mat-toolbar class="toolbar-header">
-    <span>
-      <mat-icon>toll</mat-icon>
-      ACC uređaji
-    </span>
-  </mat-toolbar>
-    <ng-container *ngFor="let tag of tagInfo">
-      <div class="info"><b>Broj ACC uređaja - </b>{{tag.id}}</div>
-      <div class="info"><b>Naziv ACC uređaja - </b>{{tag.naziv}}</div>
-      <div class="info"><b>Aktivan od - </b>10.01.2020.</div>
+<div class="cont">
+  <mat-card class="acc-list">
+    <mat-toolbar class="toolbar-header">
+      <span>
+        <mat-icon>toll</mat-icon>
+        Moji ACC uređaji
+      </span>
+    </mat-toolbar>
+    <ng-container>
+      <mat-grid-list cols="4" rowHeight="100%">
+        <mat-grid-tile *ngFor="let tag of tagInfo" [colspan]="1" [rowspan]="1" [style.background]="red">
+          <div class="info"><b>Broj ACC uređaja - </b>{{tag.id}}</div>
+          <div class="info"><b>Naziv ACC uređaja - </b>{{tag.naziv}}</div>
+          <div class="info"><b>Aktivan od - </b>10.01.2020.</div>
+        </mat-grid-tile>
+      </mat-grid-list>
     </ng-container>
-    <div class="editlb">
-  <span class="info"> Donja granica: </span>
-  <input matInput type="number" [value]="lowerBound" [(ngModel)]="lowerBound" [disabled]="isEditDisabled">
-  <ng-container *ngIf="isEditDisabled; else save">
-  <button mat-button (click)="editLowerBound()"><mat-icon>edit</mat-icon></button>
-</ng-container>
-<ng-template #save>
-  <button mat-button (click)="saveLowerBound()"><mat-icon>save</mat-icon></button>
-</ng-template>
+  </mat-card>
+  <div class="thstwo">
+    <mat-card>
+      <mat-toolbar class="toolbar-header">
+        <span>
+          <mat-icon>settings</mat-icon>
+          Postavke računa
+        </span>
+      </mat-toolbar>
+      <div class="editlb">
+        <span class="info"> Donja granica stanja računa (KM) </span>
+        <input matInput type="number" [value]="lowerBound" [(ngModel)]="lowerBound" [disabled]="isEditDisabled">
+        <ng-container *ngIf="isEditDisabled; else save">
+          <button mat-button (click)="editLowerBound()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #save>
+          <button mat-button (click)="saveLowerBound()">
+            <mat-icon>save</mat-icon>
+          </button>
+        </ng-template>
+      </div>
+      <span class="grey">
+        <mat-icon>help</mat-icon>
+        <i>Nakon što stanje računa na nekom od Vaših ACC uređaja bude manje od ovdje navedene granice, poslaćemo Vam
+          obavijest.</i>
+      </span>
+    </mat-card>
+    <mat-card class="visina">
+      <mat-toolbar class="toolbar-header">
+        <span>
+          <mat-icon>library_add</mat-icon>
+          Dodajte novi ACC uređaj
+        </span>
+      </mat-toolbar>
+      <div class="editlb">
+        <mat-form-field appearance="fill">
+          <mat-label>Kategorija vozila</mat-label>
+        <mat-select [(ngModel)]="kategorija" name="kategorija">
+          <mat-option value="1">Kategorija I</mat-option>
+          <mat-option value="2">Kategorija II</mat-option>
+          <mat-option value="3">Kategorija III</mat-option>
+          <mat-option value="3">Kategorija IV</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <button mat-button class="posalji" (click)="posaljiZahtjev()" [disabled]="cansend()">Pošalji zahtjev</button>
+      </div>
+      <span class="grey">
+        <mat-icon>help</mat-icon>
+        <i>Nakon što pošaljete zahtjev za novim uređajem, kontaktiraćemo Vas u roku od pet radnih dana.</i>
+      </span>
+    </mat-card>
+  </div>
 </div>
-</mat-card>

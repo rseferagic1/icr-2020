@@ -1,9 +1,12 @@
 .overview-container {
     display: flex;
+    height: 90%;
 }
 
 .card {
     margin: 2%;
+    width: 100%;
+    align-items: center;
 }
 
 .w-50 {

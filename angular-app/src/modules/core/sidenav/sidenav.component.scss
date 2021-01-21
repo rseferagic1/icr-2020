@@ -7,7 +7,9 @@ $base-light-color: rgb(217, 230, 242);
     left: 0;
     right: 0;
   }
-
+.shadow {
+  box-shadow: 1px 1px 3px #FF0000;
+}
   .item-button {
       display: flex;
       margin-left:auto;
@@ -39,11 +41,23 @@ $base-light-color: rgb(217, 230, 242);
     left: 0;
     padding-left: 0px;
     background-color: $base-light-color;
+    div{
+      display: flex;
+    height: 100%;
+    width: 50%;
+  }
     span {   
         display: flex;
     }
+    span.title {
+      font-size: 1.3em;
+      font-weight: 500;
+      align-items: center;
+      padding-left: 2%;
+      color: $base-color;
+    }
     .menu-icon {
-        width: 5%;
+        width: 10%;
         height: 100%;
         mat-icon {
             display: flex;

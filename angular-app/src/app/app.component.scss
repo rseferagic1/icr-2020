@@ -1,4 +1,4 @@
-html, body {
+::ng-deep html, body {
     height: 100% !important;
     margin: 0 !important;
 }
@@ -6,4 +6,8 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
+}
+::ng-deep mat-form-field.mat-form-field {
+    display: grid;
+    width: 80%;
 }

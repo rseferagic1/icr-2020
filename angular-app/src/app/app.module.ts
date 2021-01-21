@@ -19,6 +19,8 @@ import { OverviewComponent } from 'src/modules/dashboard/overview/overview.compo
 import { AccHistoryComponent } from 'src/modules/history/acc-history/acc-history.component';
 import { RouteOverviewComponent } from 'src/modules/route-overview/route-overview/route-overview.component';
 import { RouteOverviewModule } from 'src/modules/route-overview/route-overview.module';
+import { RegisterComponent } from 'src/modules/login/register/register.component';
+import { PaymentStepsComponent } from 'src/modules/payments/payment-steps/payment-steps.component';
 @NgModule({
   declarations: [
     AppComponent
@@ -36,12 +38,14 @@ import { RouteOverviewModule } from 'src/modules/route-overview/route-overview.m
     RouterModule.forRoot([
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       {path: 'login', component: LoginComponent, },
+      {path: 'register', component: RegisterComponent},
       { path: 'in', component: SidenavComponent,
         children: [
           { path: '', redirectTo: 'pocetna', pathMatch: 'full' },
           { path: 'pocetna', component: OverviewComponent },
           { path: 'historija', component: AccHistoryComponent },
-          { path: 'pregled-ruta', component: RouteOverviewComponent}
+          { path: 'pregled-ruta', component: RouteOverviewComponent},
+          { path: 'dopuna', component: PaymentStepsComponent}
         ]
       }
 

@@ -1,11 +1,12 @@
 
-  <mat-toolbar class="toolbar-header">
-    <span>
-      Pregled ruta
-    </span>
-  </mat-toolbar>
   <div class="alles">
   <mat-card class="filter">
+    <mat-toolbar class="toolbar-header">
+      <span>
+        <mat-icon>search</mat-icon>
+        Filter
+      </span>
+    </mat-toolbar>
     <form [formGroup]="tacke">
       <div class="join">
         <label>Početna tačka</label>
@@ -27,7 +28,12 @@
 
 </mat-card>
 <mat-card class="sverute">
-  <label>Sve rute</label>
+  <mat-toolbar class="toolbar-header">
+    <span>
+      <mat-icon>alt_route</mat-icon>
+        Detalji ruta
+    </span>
+  </mat-toolbar>
   <mat-accordion class="paneli">
     <ng-container *ngFor="let iz of izlazi">
     <mat-expansion-panel hideToggle>

@@ -1,5 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { formatDate } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, Sort } from '@angular/material';
+import { UsersService } from 'src/modules/core/users.service';
 
 @Component({
   selector: 'app-acc-history',
@@ -13,10 +16,16 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
     ]),
   ],
 })
-export class AccHistoryComponent {
-  dataSource = ELEMENT_DATA;
+export class AccHistoryComponent implements OnInit {
+  constructor(
+    private userService: UsersService
+  ) {
+
+  }
   columnsToDisplay = ['naziv', 'broj', 'datum', 'iznos'];
   expandedElement: Historija | null;
+  dataSource;
+  sortedData;
   imekolone = 
     {
       naziv: 'Akcija',
@@ -24,8 +33,54 @@ export class AccHistoryComponent {
       iznos: 'Iznos',
       broj: 'Broj ACC uređaja'
     }
+    ngOnInit() {
+      this.dataSource = this.userService.getUser1History();
+      this.sortedData = new MatTableDataSource(this.userService.getUser1History());
+    
+    }
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.sortedData.filter = filterValue.trim().toLowerCase();
+    }
+
+    sortData(sort: Sort) {
+      const data = this.dataSource.slice();
+      if (!sort.active || sort.direction === '') {
+        this.sortedData = data;
+        return;
+      }
   
-}
+      this.sortedData = data.sort((a, b) => {
+        const isAsc = sort.direction === 'asc';
+        switch (sort.active) {
+          case 'naziv': return this.compare(a.naziv, b.naziv, isAsc);
+          case 'broj': return this.compare(a.broj, b.broj, isAsc);
+          case 'datum': return this.compareDate(a.datum, b.datum, isAsc);
+          case 'iznos': return this.compareMoney(a.iznos, b.iznos, isAsc);
+          default: return 0;
+        }
+      });
+    }
+    compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+    compareDate(a: string, b: string, isAsc: boolean) {
+      let date1 = Date.parse(a);
+      let date2 = Date.parse(b);
+
+      return (date1 < date2 ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+    compareMoney(a: string, b: string, isAsc: boolean) {
+      let mon1 = Number(a.slice(0, -2));
+      let mon2 = Number(b.slice(0, -2));
+      
+      return (mon1 < mon2 ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+  }
+  
+
+
+
 
 export interface Historija {
   naziv: string;
@@ -38,77 +93,3 @@ export interface Historija {
   vrijemeIz: string;
 }
 
-
-
-const ELEMENT_DATA: Historija[] = [
-  {
-    naziv: 'Uplata',
-    datum: '11.04.2020.',
-    iznos: '20.00KM',
-    broj: '1230 2675 1884',
-    ulaz: '-',
-    izlaz: '-',
-    vrijemeUl: '-',
-    vrijemeIz: '-'
-  },  
-  {
-    naziv: 'Naplata autoceste',
-    datum: '16.04.2020.',
-    iznos: '2.50KM',
-    broj: '1230 2675 1884',
-    ulaz: 'Sarajevo - Zapad',
-    izlaz: 'Tarčin',
-    vrijemeUl: '16:40',
-    vrijemeIz: '17:35'
-  },
-  {
-    naziv: 'Naplata autoceste',
-    datum: '17.04.2020.',
-    iznos: '2.50KM',
-    broj: '1230 2675 1884',
-    ulaz: 'Tarčin',
-    izlaz: 'Sarajevo - Zapad',
-    vrijemeUl: '13:32',
-    vrijemeIz: '14:04'
-  },
-  {
-    naziv: 'Uplata',
-    datum: '21.06.2020.',
-    iznos: '10.00KM',
-    broj: '1230 2675 1884',
-    ulaz: '-',
-    izlaz: '-',
-    vrijemeUl: '-',
-    vrijemeIz: '-'
-  },
-  {
-    naziv: 'Naplata autoceste',
-    datum: '10.07.2020.',
-    iznos: '4.00KM',
-    broj: '1230 2675 1884',
-    ulaz: 'Sarajevo - Sjever',
-    izlaz: 'Kakanj',
-    vrijemeUl: '14:56',
-    vrijemeIz: '15:49'
-  },
-  {
-    naziv: 'Naplata autoceste',
-    datum: '10.07.2020.',
-    iznos: '3.50KM',
-    broj: '1230 2675 1884',
-    ulaz: 'Kakanj II',
-    izlaz: 'Zenica - Sjever',
-    vrijemeUl: '18:12',
-    vrijemeIz: '19:18'
-  },
-  {
-    naziv: 'Uplata',
-    datum: '18.10.2020.',
-    iznos: '5.00KM',
-    broj: '1230 2675 1884',
-    ulaz: '-',
-    izlaz: '-',
-    vrijemeUl: '-',
-    vrijemeIz: '-'
-  }
-];
