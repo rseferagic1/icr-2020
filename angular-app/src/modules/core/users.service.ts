@@ -34,8 +34,11 @@ export class UsersService {
 
   getTagInfo() {
     let zaVratiti = new Array<TagInfo>();
-    zaVratiti.push({id: '1230 2675 1884', naziv: 'Moj prvi tag', datumAktivacije: '16/3/2020'});
-    zaVratiti.push({id: '2589 2614 1674', naziv: 'Moj drugi tag', datumAktivacije: '23/9/2020'});
+    zaVratiti.push({id: '1230 2675 1884', naziv: 'Moj prvi tag', auto: 'Toyota Yaris', stanje: '36.20KM', regBroj: 'A97-M-097', datumAktivacije: '16/3/2020'});
+    zaVratiti.push({id: '2589 2614 1674', naziv: 'Moj drugi tag', auto: 'Seat Toledo', stanje: '15.10KM', regBroj: 'A99-M-086',  datumAktivacije: '23/9/2020'});
+    zaVratiti.push({id: '8872 2123 9821', naziv: 'A3 Tag', auto: 'Audi A3',  stanje: '12.50KM', regBroj: 'J33-E-112',  datumAktivacije: '23/11/2020'});
+    zaVratiti.push({id: '9981 3292 1221', naziv: 'A4 Tag', auto: 'Audi A4', stanje: '56.00KM',  regBroj: 'K13-J-419',  datumAktivacije: '12/12/2020'});
+
     return zaVratiti;
   }
   setLowerBound(val) {

@@ -16,6 +16,10 @@ $base-light-color: rgb(217, 230, 242);
         vertical-align: top;
     }
 }
+.stanje {
+    font-size: 22px;
+    font-weight: 500;
+}
 .visina {
     height: 100%;
     display: grid;
@@ -29,17 +33,39 @@ $base-light-color: rgb(217, 230, 242);
 ::ng-deep.blue-snackbar {
     background-color: $base-color;
 }
+::ng-deep mat-list{
+    height: 70%;
+}
 .thstwo {
     display: grid;
     align-content: space-between;
 }
 .info, input {
     font-size: 1.2em !important;
-    width: fit-content!important;
-    margin: 1em !important;
+    margin-bottom: 0.3em;
+}
+.message-do {
+    margin: 1.1em;
+}
+.mat-card .mat-divider-horizontal {
+     position: relative;
+}
+.hasoverflow {
+    overflow-y: scroll;
+}
+.w-50 {
+    width: 50%;
 }
 .editlb {
     display: flex;
+}
+::ng-deep mat-list-item {
+    margin-top: 2%;
+    padding-top: 1%;
+    height: fit-content!important;
+}
+.item {
+    margin: 5%;
 }
 .grey {
     color: gray;

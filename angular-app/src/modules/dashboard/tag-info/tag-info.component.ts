@@ -38,6 +38,7 @@ export class TagInfoComponent implements OnInit {
       duration: 6000,
       panelClass: ['blue-snackbar']
     });
+    this.kategorija = null;
   }
 
 }

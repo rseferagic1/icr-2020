@@ -7,13 +7,23 @@
       </span>
     </mat-toolbar>
     <ng-container>
-      <mat-grid-list cols="4" rowHeight="100%">
-        <mat-grid-tile *ngFor="let tag of tagInfo" [colspan]="1" [rowspan]="1" [style.background]="red">
-          <div class="info"><b>Broj ACC uređaja - </b>{{tag.id}}</div>
-          <div class="info"><b>Naziv ACC uređaja - </b>{{tag.naziv}}</div>
-          <div class="info"><b>Aktivan od - </b>10.01.2020.</div>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <mat-list class="hasoverflow">
+        <ng-container  *ngFor="let tag of tagInfo" >
+        <mat-list-item class="item">
+        <div class="w-50">
+          <div class="info">Broj ACC uređaja - <span class="stanje">{{tag.id}}</span></div>
+          <div class="info">Naziv ACC uređaja - {{tag.naziv}}</div>
+          <div class="info">Registrovano vozilo - {{tag.auto}}</div>
+          <div class="info">Registracijske tablice - {{tag.regBroj}}</div>
+          <div class="info">Aktivan od - {{tag.datum}}</div>
+        </div>
+        <div class="w-50">
+          <span class="info"> Stanje na računu: <span class="stanje">{{tag.stanje}}</span></span>
+        </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        </ng-container>
+      </mat-list>
     </ng-container>
   </mat-card>
   <div class="thstwo">
@@ -25,7 +35,7 @@
         </span>
       </mat-toolbar>
       <div class="editlb">
-        <span class="info"> Donja granica stanja računa (KM) </span>
+        <span class="info message-do"> Donja granica stanja računa (KM) </span>
         <input matInput type="number" [value]="lowerBound" [(ngModel)]="lowerBound" [disabled]="isEditDisabled">
         <ng-container *ngIf="isEditDisabled; else save">
           <button mat-button (click)="editLowerBound()">
