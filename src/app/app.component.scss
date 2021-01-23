@@ -11,3 +11,6 @@
     display: grid;
     width: 80%;
 }
+::ng-deep mat-sidenav-content{
+    margin-left: 5%;
+}
