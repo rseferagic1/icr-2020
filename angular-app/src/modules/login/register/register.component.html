@@ -5,55 +5,102 @@
         Elektronska naplata autocesta - ACC
       </span>
     </mat-toolbar>
-    <form [formGroup]="registerForm">
-      <div class="w-50">
-        <mat-form-field>
-          <input matInput formControlName="firstName" placeholder="Ime" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="lastName" placeholder="Prezime" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="address" placeholder="Adresa" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="city" placeholder="Grad" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="zip" placeholder="Zip kod" required>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select formControlName="country" >
-            <mat-option value="Bosna i Hercegovina">Bosna i Hercegovina</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="email" placeholder="Email" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="phoneNumber" placeholder="Broj telefona" required>
-        </mat-form-field>
-      </div>
-      <div class="w-50">
-        <mat-form-field>
-          <input matInput formControlName="tagNumbers" placeholder="ACC uređaj" required>
-        </mat-form-field>
+    <div class="alles">
+      <mat-horizontal-stepper class="stepper" [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="licneInfo">
+          <ng-template matStepLabel>Lične informacije</ng-template>
+          <form [formGroup]="registerForm" >
+          
+            <div class="w-50">
+              <mat-form-field>
+                <input matInput formControlName="firstName" placeholder="Ime" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput formControlName="lastName" placeholder="Prezime" required>
+              </mat-form-field>
 
-        <mat-form-field>
-          <input matInput formControlName="username" placeholder="Korisničko ime" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="password" placeholder="Password" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="confirmPassword" placeholder="Potvrdi password" required>
-        </mat-form-field>
+              <mat-form-field>
+                <input matInput formControlName="phoneNumber" [mask]="'000/000-000'" placeholder="Broj telefona"
+                  required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput type="email" formControlName="email" placeholder="Email" required>
+              </mat-form-field>
+            </div>
+            <div class="w-50">
+              <mat-form-field>
+                <input matInput formControlName="address" placeholder="Adresa" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput formControlName="city" placeholder="Grad" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput formControlName="zip" [mask]="'00000'" placeholder="Zip kod" required>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select formControlName="country">
+                  <mat-option value="Bosna i Hercegovina">Bosna i Hercegovina</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </form>
+          <div class="buttonlist">
+            <div></div>
+            <button mat-button class="dalje" (click)="validirajIDrugiKorak(stepper)">Dalje</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="korisnickeInfo">
+          <ng-template matStepLabel>ACC informacije</ng-template>
+          <form [formGroup]="accForm" >
+            <div formArrayName="accs" class="mb-5 m-auto">
+              <div style="display: flex;" *ngFor="let name of accs.controls; index as idx">
+                  <input matInput [formControlName]="idx" [mask]="'0000 0000 0000'" placeholder="Unesite broj ACC uređaja">
+                  <button mat-button (click)="deleteNameField(idx)" [matTooltip]="'Ukloni uređaj iz liste'">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <button mat-button type="button" [matTooltip]="'Dodaj novi uređaj u listu'" (click)="addNameField()">
+                    <mat-icon>add</mat-icon>
+                  </button>
+              </div>
+
+              
+            </div>
+          </form>
+          <div class="buttonlist">
+            <button mat-button class="nazad" matStepperPrevious>Nazad</button>
+
+            <button mat-button class="dalje" (click)="validirajITreciKorak(stepper)">Dalje</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="korisnickeInfo">
+          <ng-template matStepLabel>Korisničke informacije</ng-template>
+          <form [formGroup]="contactForm">
+            <div class="w-50 m-auto">
+              <mat-form-field>
+                <input matInput formControlName="username" placeholder="Username" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput formControlName="password" placeholder="Password" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput formControlName="confirmPassword" placeholder="Potvrdi password" required>
+              </mat-form-field>
+            </div>
+
+          </form>
+          <div class="buttonlist">
+            <button mat-button class="nazad" matStepperPrevious>Nazad</button>
+            <button mat-button class="dalje" (click)="validirajIZavrsi()">Kreiraj račun i loguj me</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+      <div class="register">
+        <span>Imate korisnički račun? Prijavite se&nbsp;<a role="button" (click)="redirect();"><i>ovdje.</i>
+          </a></span>
+
       </div>
-    </form>
-    <div class="register">
-    <button mat-button type="button" (click)="register()">Registruj se</button>
-    <span>Imate korisnički račun? Prijavite se &nbsp;<a role="button" (click)="redirect();"><i>ovdje.</i> </a></span>
-    
     </div>
   </mat-card>
 </div>

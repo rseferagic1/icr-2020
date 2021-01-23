@@ -1,7 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { formatDate } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, Sort } from '@angular/material';
+import { MatPaginator, MatTableDataSource, Sort } from '@angular/material';
 import { UsersService } from 'src/modules/core/users.service';
 
 @Component({
@@ -22,6 +22,8 @@ export class AccHistoryComponent implements OnInit {
   ) {
 
   }
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   columnsToDisplay = ['naziv', 'broj', 'datum', 'iznos'];
   expandedElement: Historija | null;
   dataSource;
@@ -36,6 +38,8 @@ export class AccHistoryComponent implements OnInit {
     ngOnInit() {
       this.dataSource = this.userService.getUser1History();
       this.sortedData = new MatTableDataSource(this.userService.getUser1History());
+      
+    this.sortedData.paginator = this.paginator;
     
     }
     applyFilter(event: Event) {

@@ -60,6 +60,16 @@ export class UsersService {
         vrijemeIz: '-'
       },  
       {
+        naziv: 'Uplata',
+        datum: '12/04/2020',
+        iznos: '15.00KM',
+        broj: '9981 3292 1221',
+        ulaz: '-',
+        izlaz: '-',
+        vrijemeUl: '-',
+        vrijemeIz: '-'
+      },  
+      {
         naziv: 'Naplata autoceste',
         datum: '16/04/2020',
         iznos: '2.50KM',
@@ -73,11 +83,22 @@ export class UsersService {
         naziv: 'Naplata autoceste',
         datum: '17/04/2020',
         iznos: '2.50KM',
-        broj: '1230 2675 1884',
+        broj: '9981 3292 1221',
         ulaz: 'Tarčin',
         izlaz: 'Sarajevo - Zapad',
-        vrijemeUl: '13:32',
-        vrijemeIz: '14:04'
+        vrijemeUl: '13:52',
+        vrijemeIz: '14:16'
+      },
+      
+      {
+        naziv: 'Naplata autoceste',
+        datum: '19/04/2020',
+        iznos: '2.50KM',
+        broj: '2589 2614 1674',
+        ulaz: 'Sarajevo - Zapad',
+        izlaz: 'Tarčin',
+        vrijemeUl: '16:40',
+        vrijemeIz: '17:35'
       },
       {
         naziv: 'Uplata',
@@ -143,12 +164,22 @@ export class UsersService {
         naziv: 'Uplata',
         datum: '01/01/2020',
         iznos: '25.00KM',
-        broj: '2589 2614 1674',
+        broj: '8872 2123 9821',
         ulaz: '-',
         izlaz: '-',
         vrijemeUl: '-',
         vrijemeIz: '-'
-      }
+      },
+      {
+        naziv: 'Naplata autoceste',
+        datum: '07/07/2020',
+        iznos: '3.50KM',
+        broj: '8872 2123 9821',
+        ulaz: 'Kakanj II',
+        izlaz: 'Zenica - Sjever',
+        vrijemeUl: '18:12',
+        vrijemeIz: '19:18'
+      },
     ];
   }
 }

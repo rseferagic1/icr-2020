@@ -15,7 +15,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatTooltipModule,
     MatSortModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
   ],
   declarations: [AccHistoryComponent],
   exports: [AccHistoryComponent, HistoryRoutingModule]

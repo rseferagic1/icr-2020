@@ -8,6 +8,26 @@ $base-light-color: rgb(217, 230, 242);
     position: fixed;
     width:100%;
 }
+.nazad {
+    background-color: $base-light-color;
+    color: $base-color;
+    font-size: 20px;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.dalje {
+    color: white;
+    background-color: $base-color;
+    font-size: 20px;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .toolbar-header {
     display: flex;
     justify-content: space-between;
@@ -36,13 +56,6 @@ $base-light-color: rgb(217, 230, 242);
         }
        
     }
-    button {
-        font-size: 20px;
-        background-color: $base-color;
-        color:white;
-        font-weight: 300;
-        margin-top: 1em;
-    }
     
 }
 .error {
@@ -64,6 +77,21 @@ $base-light-color: rgb(217, 230, 242);
 }
 a:hover {
     cursor: pointer;
+}
+.m-auto {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mb-5 {
+    margin-bottom: 5%;
+}
+.buttonlist {
+    display: flex;
+    justify-content: space-between;    
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 .opt {
     margin-top: 5em;
